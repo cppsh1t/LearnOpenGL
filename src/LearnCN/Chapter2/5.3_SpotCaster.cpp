@@ -19,8 +19,8 @@ void processInput(GLFWwindow *window);
 unsigned int loadTexture(const char *path);
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1400;
+const unsigned int SCR_HEIGHT = 900;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -76,8 +76,8 @@ int main()
 
     // build and compile our shader zprogram
     // ------------------------------------
-    Shader lightingShader("Shaders/Chapter2/5.4_light_casters.vs", "Shaders/Chapter2/5.4_light_casters.fs");
-    Shader lightCubeShader("Shaders/Chapter2/5.2_light_cube.vs", "Shaders/Chapter2/5.2_light_cube.fs");
+    Shader lightingShader("Shaders/Chapter2/5.3_light_casters.vs", "Shaders/Chapter2/5.3_light_casters.fs");
+    Shader lightCubeShader("Shaders/Chapter2/5.2_light_cube.vs", "Shaders/Chapter2/5.2_light_cube.vs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -200,7 +200,6 @@ int main()
         lightingShader.setVec3("light.position", camera.Position);
         lightingShader.setVec3("light.direction", camera.Front);
         lightingShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-        lightingShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
         lightingShader.setVec3("viewPos", camera.Position);
 
         // light properties
@@ -246,6 +245,7 @@ int main()
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
+
 
         // again, a lamp object is weird when we only have a spot light, don't render the light object
         // lightCubeShader.use();
