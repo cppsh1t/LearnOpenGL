@@ -27,7 +27,7 @@ INCLUDE	:= include
 
 # define lib directory
 LIB		:= lib
-Libraries := -lglad -lglfw3dll
+Libraries := -lglad -lglfw3dll -lassimp -lassimp.dll
 
 ifeq ($(OS),Windows_NT)
 MAIN	:= main.exe
